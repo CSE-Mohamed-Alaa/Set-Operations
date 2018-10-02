@@ -1,7 +1,6 @@
 package application;
 
 import java.util.ArrayList;
-import java.util.BitSet;
 
 public class Set {
 	private static String[] universe;
