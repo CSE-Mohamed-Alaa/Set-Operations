@@ -10,7 +10,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 public class SetSubsetsController {
@@ -44,16 +43,20 @@ public class SetSubsetsController {
 	@FXML
 	void addSet(ActionEvent event) {
 		int idx = setNameChoiseBox.getSelectionModel().getSelectedIndex();
+		String setName = setNameChoiseBox.getSelectionModel().getSelectedItem();
 		sets[idx] = new Set();
 		boolean error = !sets[idx].setSet(subSetTextField.getText());
-
-		if (error) {
+		
+		if (!subSetTextField.getText().matches("(\\s*\\w+\\s*)*(,\\s*\\w+\\s*)*")) {
 			errorLabel.setTextFill(Color.RED);
-			errorLabel.setText("set has elements not exsisting in Universe set");
+			errorLabel.setText("Error, Can't enter " + setName + " Set!!");		
+		} else if (error) {
+			errorLabel.setTextFill(Color.RED);
+			errorLabel.setText(setName + " has elements not existing in Universe set!!");
 		} else {
 
 			errorLabel.setTextFill(Color.GREEN);
-			errorLabel.setText("set has been set successfully");
+			errorLabel.setText(setName + " has been set successfully");
 		}
 	}
 

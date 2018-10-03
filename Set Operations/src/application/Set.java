@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Set {
 	private static String[] universe;
 	private boolean[] set;
-	
+
 	public Set() {
 		this.set = new boolean[universe.length];
 	}
@@ -13,17 +13,21 @@ public class Set {
 	public static String[] getUniverse() {
 		return universe;
 	}
-	
+
 	public static boolean setUniverse(String input) {
-		//TODO
+		if (!input.matches("\\s*\\w+\\s*(,\\s*\\w+\\s*)*")) {
+			return false;
+		}
+
 		if (input.equals("")) {
 			return false;
 		}
-		String [] x = input.split(",");
-		ArrayList<String> temp  = new ArrayList<>();
+		input = input.replaceAll("\\s", "");
+		String[] x = input.split(",");
+		ArrayList<String> temp = new ArrayList<>();
 		for (int i = 0; i < x.length; i++) {
 			int j;
-			for ( j = 0; j < i ; j++) {
+			for (j = 0; j < i; j++) {
 				if (x[i].equals(x[j])) {
 					break;
 				}
@@ -41,26 +45,31 @@ public class Set {
 	}
 
 	public boolean setSet(String input) {
+		
+		// true because we can take empty sets now
 		if (input.equals("")) {
-			return false;
+			return true;
 		}
-		String [] x = input.split(",");
-		boolean [] temp = new boolean[universe.length];
+		input = input.replaceAll("\\s", "");
+		String[] x = input.split(",");
+		boolean[] temp = new boolean[universe.length];
+		boolean elementExist = false;
 		for (int i = 0; i < x.length; i++) {
-			boolean f = false;
+			elementExist = false;
 			for (int j = 0; j < universe.length; j++) {
 				if (x[i].equals(universe[j])) {
-					temp[j] = true; 
-					f = true;
+					temp[j] = true;
+					elementExist = true;
 				}
 			}
-			if (!f) {
-				return f;
+			if (!elementExist) {
+				return false;
 			}
 		}
 		set = temp;
 		return true;
 	}
+
 	public boolean[] intersection(boolean[] a) {
 		boolean[] ans = new boolean[a.length];
 		for (int i = 0; i < a.length; i++) {
@@ -92,16 +101,16 @@ public class Set {
 	}
 
 	public String toString(boolean[] set) {
-		String ans = "{" ;
+		String ans = "{";
 		for (int i = 0; i < set.length; i++) {
 			if (set[i]) {
-				ans += universe[i] + ", "; 
+				ans += universe[i] + ", ";
 			}
 		}
-		if (ans.length() > 1) {		
-		ans = ans.substring(0, ans.length() - 2) + "}";}
-		else {
-			 ans = "Ø";
+		if (ans.length() > 1) {
+			ans = ans.substring(0, ans.length() - 2) + "}";
+		} else {
+			ans = "Ã˜";
 		}
 		return ans;
 	}

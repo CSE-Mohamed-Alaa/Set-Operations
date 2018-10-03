@@ -34,6 +34,8 @@ public class OperationController {
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFilePass));
 		Parent root = loader.load();
+		SetSubsetsController x = loader.getController();
+		x.passInfo(sets);
 		Stage primaryStage = (Stage) ref.getScene().getWindow();
 		primaryStage.setScene(new Scene(root, 700, 500));
 
