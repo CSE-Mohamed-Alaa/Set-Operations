@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public class Set {
 	private static String[] universe;
 	private boolean[] set;
+	
+	public Set() {
+		this.set = new boolean[universe.length];
+	}
 
 	public static String[] getUniverse() {
 		return universe;
@@ -67,7 +71,7 @@ public class Set {
 		return ans;
 	}
 
-	public boolean[] union(boolean[] a, boolean[] b) {
+	public boolean[] union(boolean[] a) {
 		boolean[] ans = new boolean[a.length];
 		for (int i = 0; i < a.length; i++) {
 			if (a[i] || set[i]) {
@@ -87,7 +91,7 @@ public class Set {
 		return ans;
 	}
 
-	public String toString() {
+	public String toString(boolean[] set) {
 		String ans = "{" ;
 		for (int i = 0; i < set.length; i++) {
 			if (set[i]) {

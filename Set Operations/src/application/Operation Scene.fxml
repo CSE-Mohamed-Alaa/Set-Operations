@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OperationController">
    <center>
       <VBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
@@ -26,7 +25,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <ChoiceBox />
+                        <ChoiceBox fx:id="set1" />
                      </children>
                   </VBox>
                   <VBox alignment="TOP_CENTER" spacing="20.0">
@@ -39,10 +38,10 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <ChoiceBox />
+                        <ChoiceBox fx:id="operation" />
                      </children>
                   </VBox>
-                  <VBox alignment="TOP_CENTER" spacing="20.0">
+                  <VBox fx:id="vboxSet2" alignment="TOP_CENTER" spacing="20.0">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
@@ -52,7 +51,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <ChoiceBox />
+                        <ChoiceBox fx:id="set2" />
                      </children>
                   </VBox>
                </children>
@@ -60,7 +59,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </HBox>
-            <Label text="answer and error label (Green for answer and red for error)" textFill="GREEN">
+            <Label fx:id="answerLabel" textFill="GREEN">
                <font>
                   <Font size="24.0" />
                </font>
@@ -70,12 +69,12 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                <children>
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Back">
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#back" text="Back">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" text="Calculate">
+                  <Button mnemonicParsing="false" onAction="#calculate" text="Calculate">
                      <font>
                         <Font size="18.0" />
                      </font>

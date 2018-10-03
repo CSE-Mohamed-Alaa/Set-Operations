@@ -42,7 +42,7 @@ public class SetsInputController {
 		if(universeError) {
 			errorLabel.setText("Error, Can't enter the Universe Set!!");	
 		}
-		else if (numOfSets == 0) {
+		else if (numOfSets < 1) {
 			errorLabel.setText("Failed to get the number of Subsets!!");	
 		}
 		else if (numOfSets > 26) {
@@ -59,7 +59,7 @@ public class SetsInputController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFilePass));
         Parent root = loader.load();
         SetSubsetsController setSubsetsController = loader.getController();
-        setSubsetsController.setChoiseBox(sets.length);
+        
         setSubsetsController.passInfo(sets);
         Stage primaryStage = (Stage) ref.getScene().getWindow();
         primaryStage.setScene(new Scene(root, 700, 500));
